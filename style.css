@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Tektur:wght@400..900&display=swap');
+
+:root{
+    --fonte-primaria:"Quicksand", sans-serif;
+    --fonte-secundaria:"Tektur", sans-serif;
+    --cinza: #335c67ff;
+    --amarelo-claro: #fff3b0ff;
+    --amarelo: #e09f3eff;
+    --vermelho: #9e2a2bff;
+    --vermelho-escuro: #540b0eff;
+    --preto: #000000;
+    --branco: #f1f1f1;
+}
+
+body{
+    background-color: var(--cinza);
+    color: var(--preto);
+    font-family: var(--fonte-primaria);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.conteudo-principal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.titulo-principal{
+    font-family: var(--fonte-secundaria);
+    text-align: left;
+    width: 100%;
+    font-size: 36px;
+}
+
+span{
+    color: var(--amarelo);
+}
+
+.botao{
+    font-family: var(--fonte-primaria);
+    background-color: var(--amarelo-claro);
+    color: var(--preto);
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    font-size: 18px;
+    align-items: center;
+    width: 100%;
+    border-bottom: 4px solid var(--amarelo);
+    border-left: 4px solid var(--amarelo);
+    border-right: 4px solid var(--amarelo);
+    border-top: none;
+}
+
+.botoes{
+    display: block;
+}
+
+.botao:first-child{
+    border-radius: 40px 40px 0 0;
+}
+
+.botao:last-child{
+    border-radius: 0 0 40px 40px;
+}
+
+.botao.ativo{
+    background-color: var(--vermelho);
+    border-bottom: var(--vermelho-escuro);
+    color: var(--branco);
+}
+
+.abas-textos{
+    background-color: var(--amarelo-claro);
+    padding: 40px;
+    border-radius: 0 0 40px 40px;
+}
+
+.aba-conteudo.ativo{
+    display: block;
+}
+
+.aba-conteudo{
+    display: none;
+}
+
+.aba-conteudo-titulo-principal{
+    font-size: 28px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.aba-conteudo-titulo-secundario{
+    text-align: center;
+    color: var(--vermelho-escuro);
+}
+
+
+
+@media screen and (min-width: 768px){
+    .botoes{ 
+        display: flex;
+    }
+    .botao:first-child{
+        border-radius: 40px 0 0 0;
+    }
+    .botao:last-child{
+        border-radius: 0 40px 0 0;
+    }
+}
