@@ -10,17 +10,11 @@ const tempoObjetivo04 = new Date("2025-11-10T00:00:00");
 
 const tempos = [tempoObjetivo01, tempoObjetivo02, tempoObjetivo03, tempoObjetivo04];
 
-for(i =0; i < contadores.length; i++){
-    contadores[i].textContent = calculaTempo(tempos[i]);
-}
- 
+for (let i = 0; i < botoes.length; i++) {
 
+    botoes[i].onclick = function () {
 
-for (let i= 0; i < botoes.length; i++){
-
-    botoes[i].onclick = function (){
-
-        for (let j =0; j < botoes.length; j++){
+        for (let j = 0; j < botoes.length; j++) {
             botoes[j].classList.remove('ativo');
             textos[j].classList.remove('ativo');
         }
@@ -30,18 +24,34 @@ for (let i= 0; i < botoes.length; i++){
     }
 }
 
-function calculaTempo(tempoObjetivo){
+function calculaTempo(tempoObjetivo) {
     let tempoAtual = new Date();
     let tempoFinal = tempoObjetivo - tempoAtual;
 
-    let segundos = Math.floor(tempoFinal/1000);
-    let minutos = Math.floor(segundos/60);
-    let horas = Math.floor(minutos/60);
-    let dias = Math.floor(horas/24);
+    let segundos = Math.floor(tempoFinal / 1000);
+    let minutos = Math.floor(segundos / 60);
+    let horas = Math.floor(minutos / 60);
+    let dias = Math.floor(horas / 24);
 
     segundos %= 60;
     minutos %= 60;
     horas %= 24;
-
-    return dias + " Dias " + horas + " Horas " + minutos + " Minutos " + segundos + " Segundos "
+    if (tempoFinal > 0) {
+        return dias + " Dias " + horas + " Horas " + minutos + " Minutos " + segundos + " Segundos "
+    } else {
+        return "Objetivo concluido"
+    }
 }
+
+function atualizaCronometro() {
+    for (i = 0; i < contadores.length; i++) {
+        document.getElementById("dias"+i).textContent = calculaTempo(tempos[i])[0];
+        document.getElementById("horas"+i).textContent = calculaTempo(tempos[i])[1];
+        document.getElementById("min"+i).textContent = calculaTempo(tempos[i])[2];
+        document.getElementById("seg"+i).textContent = calculaTempo(tempos[i])[3] ;
+    }
+}
+
+
+atualizaCronometro();
+setInterval(atualizaCronometro, 1000);
